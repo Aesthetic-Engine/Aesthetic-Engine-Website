@@ -34,7 +34,7 @@ export default defineConfig({
 					label: 'Ecosystem',
 					items: [
 						{ label: 'Overview', slug: 'ecosystem' },
-						{ label: 'Aesthetic Engine Builder', slug: 'ecosystem/builder' },
+						{ label: 'Aesthetic Engine Builder (AEB)', slug: 'ecosystem/builder' },
 						{ label: 'Godot Runtime Bridge', slug: 'ecosystem/grb' },
 					],
 				},
