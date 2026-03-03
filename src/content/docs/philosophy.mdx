@@ -9,17 +9,15 @@ Aesthetic Engine's position is that the future of game development is agentic. D
 
 ## The Wireframe Decision
 
-After the studio's first project with agentic game development, the diffusion model debate came into focus. Both sides make valid points. Ultimately it became clear that the debate itself was the roadblock for development and was consuming time and energy that should be going toward advancing agentic game development.
+Building agentic games quickly exposes a critical bottleneck: the diffusion model debate. While the industry argues over asset generation, the debate itself has become a roadblock, consuming the time and energy needed to actually advance autonomous workflows. We decided to sidestep it entirely. The new design constraint: no diffusion models. Everything is drawn by code.
 
-The studio decided to sidestep it entirely.
+Inspiration came from an unlikely place: Falcom's 1983 microcomputer game, *Monster House*. Pure wireframe graphics. No sprites, no textures. Everything rendered from raw geometry. Just as early developers used wireframes to bypass the strict memory limits of 80s hardware, we can use them to bypass the visual limitations of current LLMs. It looks deliberate. It looks fast. And crucially, it is something an AI agent can natively reason about and compile.
 
-The constraint became the design: no diffusion models. Everything drawn by code.
+With Cursor directing the architecture, the constraint wasn't a limitation — it was a vehicle. It keeps costs zero, feedback loops instant, and the AI operating in a domain where it is genuinely elite.
 
-The inspiration came from an unlikely place: *Monster House*, a 1983 Japanese microcomputer game by Falcom. Pure wireframe graphics. No sprites, no textures. Everything rendered from geometry. It looked deliberate. It looked fast. And crucially, it looked like something a language model could reason about and produce.
+Code is the rendering pipeline. Math is the art department.
 
-That was the realization: Cursor could build wireframe graphics under the direction of the developer. Code as the rendering pipeline. Math as the art department. The constraint wasn't a limitation — it was a vehicle. One that kept costs manageable, kept the feedback loop tight, and kept the AI agent in territory where it's genuinely strong.
-
-This is the path forward. Code-generated visuals, while visually a step back in time, are where agentic game development has traction today — and as AI model capabilities continue to develop exponentially, the studio expects that to scale. Wireframes become 8-bit. 8-bit becomes richer. The tooling grows with the capability.
+This is the path forward. While visually a step back in time, code-generated visuals are where agentic game development has real traction today. As AI capabilities scale, the studio's roadmap scales with it: wireframes become 8-bit, 8-bit becomes richer, and the tooling grows alongside the models.
 
 That became [Aesthetic Engine Builder](/ecosystem/builder/).
 
@@ -27,11 +25,11 @@ That became [Aesthetic Engine Builder](/ecosystem/builder/).
 
 ## How Aesthetic Engine Ships
 
-The tooling for this future needs to move at the speed of the AI toolchain — which means shipping when it's ready, not when a review queue clears.
+The tooling for this future must move at the speed of the AI ecosystem. That means shipping the moment a tool is ready, not waiting for a storefront review queue to clear.
 
-Updates and releases are published via this site and GitHub directly. Aesthetic Engine is not on the Godot Asset Library — AEB doesn't fall neatly into any of its asset categories, and distributing through GitHub removes the bottleneck of library update cycles while keeping the studio free to iterate at the pace the AI toolchain demands.
+Aesthetic Engine Builder bypasses the Godot Asset Library entirely. AEB doesn't fit neatly into traditional asset categories, and distributing directly through GitHub removes the bottleneck of library update cycles. It keeps the studio free to iterate at the exact pace the AI toolchain demands.
 
-Bug reports go straight to GitHub Issues. Fixes ship directly to users. Every commit is public, every release has a changelog, and the tools are MIT-licensed — fork them, vendor them, ship them inside your game.
+Bug reports go to GitHub Issues. Fixes ship directly to users. Every commit is public, every release has a changelog, and everything is MIT-licensed. Fork it, vendor it, and ship it inside your game.
 
 ---
 
