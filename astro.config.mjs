@@ -38,7 +38,7 @@ export default defineConfig({
 						{ label: 'Godot Runtime Bridge (GRB)', slug: 'ecosystem/grb' },
 					],
 				},
-				{ label: 'Philosophy', slug: 'manifesto' },
+				{ label: 'Philosophy', slug: 'philosophy' },
 				{
 					label: 'Documentation',
 					items: [
