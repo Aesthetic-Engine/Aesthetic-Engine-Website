@@ -3,8 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-	site: 'https://aesthetic-engine.github.io',
-	base: '/Aesthetic-Engine-Website',
+	site: 'https://aestheticengine.games',
 	integrations: [
 		starlight({
 			title: 'Aesthetic Engine',
@@ -39,7 +38,7 @@ export default defineConfig({
 						{ label: 'Godot Runtime Bridge', slug: 'ecosystem/grb' },
 					],
 				},
-				{ label: 'Manifesto', slug: 'manifesto' },
+				{ label: 'Philosophy', slug: 'manifesto' },
 				{
 					label: 'Documentation',
 					items: [

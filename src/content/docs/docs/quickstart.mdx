@@ -5,9 +5,7 @@ description: Get from zero to a running agentic Godot workflow in five minutes.
 
 import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
-# Quickstart
-
-Get the Godot Runtime Bridge connected to Cursor and running against your game.
+Get from zero to a running agentic Godot workflow in five minutes.
 
 ## Prerequisites
 
@@ -19,7 +17,71 @@ Get the Godot Runtime Bridge connected to Cursor and running against your game.
 
 ---
 
-## Setup
+## Choose Your Path
+
+<Tabs>
+<TabItem label="Aesthetic Engine Builder">
+
+AEB includes GRB. Clone the full project template and you get both the wireframe game builder and the runtime bridge pre-configured.
+
+<Steps>
+
+1. **Clone Aesthetic Engine Builder**
+
+   ```bash title="Terminal"
+   git clone https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder.git
+   cd Aesthetic-Engine-Builder/mcp
+   npm install
+   ```
+
+2. **Open the project in Godot 4.5+**
+
+   Open the cloned folder in Godot to import. Both addons (AEB and GRB) are pre-installed and pre-configured.
+
+3. **Open the project folder in Cursor**
+
+   **File → Open Folder** → select the `Aesthetic-Engine-Builder` folder.
+
+4. **Create the MCP config**
+
+   Create `.cursor/mcp.json` in the project root:
+
+   ```json title=".cursor/mcp.json"
+   {
+     "mcpServers": {
+       "godot-runtime-bridge": {
+         "command": "node",
+         "args": ["C:/path/to/Aesthetic-Engine-Builder/mcp/index.js"],
+         "env": {
+           "GODOT_PATH": "C:/path/to/Godot_v4.5-stable_win64.exe"
+         }
+       }
+     }
+   }
+   ```
+
+   Replace both paths with your actual locations.
+
+5. **Enable the MCP server in Cursor**
+
+   Go to **Settings → Tools & MCP** → find **godot-runtime-bridge** → toggle **ON**.
+
+   You should see a green indicator next to the server name.
+
+6. **Test the connection**
+
+   In Cursor Agent chat, type:
+
+   > Launch my game and take a screenshot of the main scene.
+
+   The agent will launch Godot, capture a screenshot, and display it in the chat.
+
+</Steps>
+
+</TabItem>
+<TabItem label="Godot Runtime Bridge only">
+
+Use this path if you want to add GRB to an existing Godot project without the AEB template.
 
 <Steps>
 
@@ -73,10 +135,13 @@ Get the Godot Runtime Bridge connected to Cursor and running against your game.
 
 </Steps>
 
+</TabItem>
+</Tabs>
+
 ---
 
 ## What's Next
 
-- [Full installation guide](/docs/installation/) — detailed setup including AEB, exported builds, and troubleshooting
+- [Full installation guide](/docs/installation/) — detailed setup including exported builds and troubleshooting
 - [API Reference](/docs/api-reference/) — complete command and environment variable documentation
 - [Ecosystem overview](/ecosystem/) — how GRB and AEB work together
