@@ -1,0 +1,172 @@
+---
+title: Downloads
+description: Direct downloads and terminal install commands for Aesthetic Engine tools.
+---
+
+import { Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/components';
+
+All releases are hosted on GitHub — small zip files, direct links, no account required.
+
+---
+
+## Godot Runtime Bridge
+
+**Latest: v1.0.3**
+
+<div class="download-grid">
+<div class="download-card">
+
+### Download
+
+<span class="version">godot-runtime-bridge-v1.0.3.zip</span>
+
+[Download from GitHub](https://github.com/Aesthetic-Engine/godot-runtime-bridge/releases/download/v1.0.3/godot-runtime-bridge-v1.0.3.zip)
+
+</div>
+<div class="download-card">
+
+### Release Page
+
+<span class="version">Changelog + source</span>
+
+[View on GitHub](https://github.com/Aesthetic-Engine/godot-runtime-bridge/releases/latest)
+
+</div>
+</div>
+
+### Terminal Install
+
+<Tabs>
+<TabItem label="Git Clone">
+
+```bash title="Terminal"
+git clone https://github.com/Aesthetic-Engine/godot-runtime-bridge.git
+cd godot-runtime-bridge/mcp
+npm install
+```
+
+</TabItem>
+<TabItem label="curl">
+
+```bash title="Terminal (curl)"
+curl -LO https://github.com/Aesthetic-Engine/godot-runtime-bridge/releases/download/v1.0.3/godot-runtime-bridge-v1.0.3.zip
+unzip godot-runtime-bridge-v1.0.3.zip -d godot-runtime-bridge
+cd godot-runtime-bridge/mcp
+npm install
+```
+
+</TabItem>
+<TabItem label="PowerShell">
+
+```powershell title="PowerShell"
+Invoke-WebRequest -Uri "https://github.com/Aesthetic-Engine/godot-runtime-bridge/releases/download/v1.0.3/godot-runtime-bridge-v1.0.3.zip" -OutFile "grb.zip"
+Expand-Archive -Path "grb.zip" -DestinationPath "godot-runtime-bridge"
+cd godot-runtime-bridge\mcp
+npm install
+```
+
+</TabItem>
+</Tabs>
+
+After downloading, copy `addons/godot-runtime-bridge/` into your Godot project's `addons/` folder and enable the plugin in **Project → Project Settings → Plugins**.
+
+---
+
+## Aesthetic Engine Builder
+
+**Latest: v1.0.0**
+
+<div class="download-grid">
+<div class="download-card">
+
+### Download
+
+<span class="version">Full project template</span>
+
+[Download from GitHub](https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder/releases/latest)
+
+</div>
+<div class="download-card">
+
+### Release Page
+
+<span class="version">Changelog + source</span>
+
+[View on GitHub](https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder/releases/latest)
+
+</div>
+</div>
+
+### Terminal Install
+
+<Tabs>
+<TabItem label="Git Clone">
+
+```bash title="Terminal"
+git clone https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder.git
+```
+
+</TabItem>
+<TabItem label="curl">
+
+```bash title="Terminal (curl)"
+curl -LO https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder/archive/refs/heads/main.zip
+unzip main.zip
+```
+
+</TabItem>
+<TabItem label="PowerShell">
+
+```powershell title="PowerShell"
+Invoke-WebRequest -Uri "https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder/archive/refs/heads/main.zip" -OutFile "aeb.zip"
+Expand-Archive -Path "aeb.zip" -DestinationPath "aesthetic-engine-builder"
+```
+
+</TabItem>
+</Tabs>
+
+Open the project folder in Godot 4.5+ to import. The builder addon is pre-configured.
+
+---
+
+## Godot Engine
+
+**Required: v4.5 or later**
+
+GRB and AEB both require Godot 4.5+ (uses the `OS.add_logger` API introduced in that version). Earlier 4.x releases will not work.
+
+<div class="download-grid">
+<div class="download-card">
+
+### Download Godot
+
+<span class="version">Get the latest stable release</span>
+
+[godotengine.org/download](https://godotengine.org/download/)
+
+</div>
+<div class="download-card">
+
+### GitHub Mirror
+
+<span class="version">All platforms + export templates</span>
+
+[GitHub Releases](https://github.com/godotengine/godot/releases)
+
+</div>
+</div>
+
+:::caution
+Make sure you download **Godot 4.5 or later**. Versions 4.4 and below are missing the Logger API that GRB depends on.
+:::
+
+---
+
+## System Requirements
+
+| Dependency | Minimum Version | Notes |
+|-----------|----------------|-------|
+| Godot | 4.5+ | Uses `OS.add_logger` API introduced in 4.5 |
+| Node.js | 20 LTS+ | Required for the MCP bridge |
+| Cursor | Latest | Or any MCP-compatible AI agent |
+| OS | Windows 10+, macOS 12+, Linux | Any platform Godot supports |

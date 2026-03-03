@@ -1,0 +1,87 @@
+---
+title: Godot Runtime Bridge
+description: TCP debug server and MCP bridge connecting AI agents to your running Godot game. Full develop → observe → verify loops.
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+# Godot Runtime Bridge (GRB)
+
+**Agentic game development and runtime automation for Godot 4.5+**
+
+GRB lets you build, test, and debug your Godot game entirely via prompting — no need to work in the editor. A TCP debug server and MCP bridge connects Cursor (and Claude Code) to your running game: you describe what you want, the agent launches the game, observes it, edits code, and verifies.
+
+---
+
+## What Your Agent Can Do
+
+- **Launch** the game, **observe** what's on screen (screenshots, scene tree, properties), **control** it (click, type, navigate), and **edit source files** based on what it sees
+- **Report bugs** — visual glitches, UI clipping, missing elements, logic issues
+- **Run QA missions** — automated test loops that navigate rooms, capture screenshots, perform perceptual diffs, and produce ticket-ready reports
+- **Profile performance** — FPS, draw calls, memory usage
+- **Inspect state** — audio buses, network status, custom game commands
+
+---
+
+## Command Reference
+
+Commands are organized into capability tiers by risk level:
+
+| Tier | Level | Commands |
+|------|-------|----------|
+| 0 | Observe | `ping`, `auth_info`, `capabilities`, `screenshot`, `scene_tree`, `get_property`, `runtime_info`, `get_errors`, `wait_for`, `audio_state`, `network_state`, `grb_performance`, `find_nodes` |
+| 1 | Input | `click`, `key`, `press_button`, `drag`, `scroll`, `gesture`, `gamepad` |
+| 2 | Control | `set_property`, `call_method`, `quit`, `run_custom_command` |
+| 3 | Danger | `eval` |
+
+---
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `GDRB_TOKEN` | _(none)_ | Auth token. Enables the server. Auto-generates if `GODOT_DEBUG_SERVER=1` |
+| `GDRB_PORT` | `0` (random) | TCP port. Set for deterministic setups |
+| `GDRB_TIER` | `1` | Max session tier (0–3) |
+| `GDRB_INPUT_MODE` | `synthetic` | `synthetic` (no OS cursor movement) or `os` (moves real cursor) |
+| `GDRB_FORCE_WINDOWED` | _(none)_ | Set to `1` to enforce windowed mode at startup |
+| `GDRB_ENABLE_DANGER` | _(none)_ | Set to `1` to allow eval. Also requires tier 3 |
+| `GODOT_DEBUG_SERVER` | _(none)_ | Legacy activation. Set to `1` to enable |
+
+---
+
+## Security Model
+
+The bridge is designed with security-first defaults:
+
+- **Off by default** — does nothing without activation env vars
+- **Localhost only** — binds to `127.0.0.1`, never exposed to network
+- **Random port** — OS-assigned by default, prevents predictable port attacks
+- **Token auth** — every command requires a valid token
+- **Capability tiers** — commands grouped by risk (observe / input / control / danger)
+- **eval disabled by default** — requires two explicit opt-ins
+
+---
+
+## Background Testing
+
+By default (`GDRB_INPUT_MODE=synthetic`), all input commands inject Godot `InputEvent` objects without touching the OS cursor. Real mouse and keyboard events from your hardware are blocked from reaching game nodes entirely — the bridge intercepts them at the viewport level so only GRB-injected events get through.
+
+Your mouse and keyboard remain yours.
+
+:::caution
+Do not minimize the game window. Godot throttles processing when minimized, which will slow or break tests. Covering the game window with other applications is fine — only minimizing causes throttling.
+:::
+
+---
+
+## Production Builds
+
+The server is completely inert without activation environment variables. No TCP server, no port, no overhead. Safe to ship in production builds without removing the addon.
+
+---
+
+## Source
+
+- [GitHub Repository](https://github.com/Aesthetic-Engine/godot-runtime-bridge)
+- License: MIT

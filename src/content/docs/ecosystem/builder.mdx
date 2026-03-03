@@ -1,0 +1,102 @@
+---
+title: Aesthetic Engine Builder
+description: "Build complete 1983-style wireframe games entirely via AI code generation. No sprites, no textures — just math and lines."
+---
+
+import { Steps, Card, CardGrid } from '@astrojs/starlight/components';
+
+# Aesthetic Engine Builder (AEB)
+
+**Build complete 1983-style wireframe games entirely via AI code generation — no sprites, no textures, no diffusion models. Just you and Cursor drawing your game with math and lines.**
+
+Answer five game design questions in the Godot editor, copy the generated prompt, paste it into Cursor Agent chat, and watch a fully playable CRT wireframe game appear.
+
+---
+
+## What You Get
+
+<CardGrid>
+	<Card title="5-Pillar Design Wizard" icon="pencil">
+		Answer questions about Goals, Rules, Interaction, Conflict, and Outcomes to describe any game you can imagine.
+	</Card>
+	<Card title="CRT Shader Pipeline" icon="setting">
+		Phosphor decay, scanlines, barrel distortion, glow, glass reflection. Looks like a real monitor from 1983.
+	</Card>
+	<Card title="Wireframe Drawing Engine" icon="star">
+		Lines, rectangles, polygons. Resolution-independent, proportional coordinates. Everything is math.
+	</Card>
+	<Card title="AI-Verified Builds" icon="approve-check">
+		Generated prompts tell Cursor to launch the game via GRB, take a screenshot, and verify the result before reporting done.
+	</Card>
+</CardGrid>
+
+---
+
+## How It Works
+
+<Steps>
+
+1. **Install the addon** in Godot 4.5+
+
+2. **Click the Aesthetic Engine Builder tab** in the bottom panel
+
+3. **Answer the 5 design pillar questions** (examples and tooltips guide you)
+
+4. **Optionally toggle "Include Sound Editor"** to add a retro synth to your game
+
+5. **Click Generate Prompt → Copy to Clipboard**
+
+6. **Paste into Cursor Agent chat**
+
+7. **Cursor builds your game**, launches it, and screenshots the result
+
+</Steps>
+
+From there, keep prompting. _"Add a title screen."_ _"Make the enemies faster."_ _"Add a high score table."_ The game is yours to extend.
+
+---
+
+## Architecture
+
+```
+WireframeCanvas (320×200 virtual resolution)
+    └─ Room drawers: dl(), dr(), dp() → command buffer → _draw()
+         └─ CRTPipeline: SubViewport → phosphor decay → CRT shader → glass reflection
+              └─ Full-screen output
+```
+
+### Core Components
+
+| Component | Purpose |
+|-----------|---------|
+| **WireframeCanvas** | Command-buffer renderer with `dl()`, `dr()`, `dp()` drawing API |
+| **CRTPipeline** | SubViewport rendering chain with phosphor decay, CRT shader, and glass reflection |
+| **EntityRenderer** | Animated wireframe entities with jitter, line-drop, and phase effects |
+| **RoomLoader** | JSON-driven room system with hotspots and actions |
+| **Sound Editor** | Retro synth + step sequencer with Intel 8253 pitch quantization and WAV export |
+
+---
+
+## Included Assets
+
+- **15 QA missions** — automated test loops Cursor can run against your game
+- **Built-in sound editor** — Intel 8253 pitch quantization, WAV export
+- **Sample game** — Tennis game walkthrough included in documentation
+
+---
+
+## Pure Code-Drawn Graphics
+
+No sprites. No textures. No image models. Every pixel is math and lines. This means:
+
+- **Zero asset pipeline** — no importing, no format conversion, no compression artifacts
+- **Resolution independent** — scales to any display without blur or aliasing decisions
+- **Fully deterministic** — same code produces same output every time, on every platform
+- **AI-friendly** — an LLM can read, write, and reason about drawing commands as easily as any other code
+
+---
+
+## Source
+
+- [GitHub Repository](https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder)
+- License: MIT

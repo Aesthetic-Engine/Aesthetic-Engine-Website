@@ -1,0 +1,82 @@
+---
+title: Quickstart
+description: Get from zero to a running agentic Godot workflow in five minutes.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Quickstart
+
+Get the Godot Runtime Bridge connected to Cursor and running against your game.
+
+## Prerequisites
+
+| Requirement | Version |
+|------------|---------|
+| Godot | 4.5 or later |
+| Node.js | LTS (20+) |
+| Cursor | Latest |
+
+---
+
+## Setup
+
+<Steps>
+
+1. **Clone the MCP bridge**
+
+   ```bash title="Terminal"
+   git clone https://github.com/Aesthetic-Engine/godot-runtime-bridge.git
+   cd godot-runtime-bridge/mcp
+   npm install
+   ```
+
+2. **Copy the addon into your Godot project**
+
+   Copy `addons/godot-runtime-bridge/` from the cloned repo into your project's `addons/` folder.
+
+   Then enable it: **Project → Project Settings → Plugins → Godot Runtime Bridge → Enable**.
+
+3. **Create the MCP config**
+
+   Create `.cursor/mcp.json` in your project root:
+
+   ```json title=".cursor/mcp.json"
+   {
+     "mcpServers": {
+       "godot-runtime-bridge": {
+         "command": "node",
+         "args": ["C:/path/to/godot-runtime-bridge/mcp/index.js"],
+         "env": {
+           "GODOT_PATH": "C:/path/to/Godot_v4.5-stable_win64.exe"
+         }
+       }
+     }
+   }
+   ```
+
+   Replace both paths with your actual locations.
+
+4. **Enable the MCP server in Cursor**
+
+   Go to **Settings → Tools & MCP** → find **godot-runtime-bridge** → toggle **ON**.
+
+   You should see a green indicator next to the server name.
+
+5. **Test the connection**
+
+   In Cursor Agent chat, type:
+
+   > Launch my game and take a screenshot of the main scene.
+
+   The agent will launch Godot, run your project, capture a screenshot, and display it in the chat.
+
+</Steps>
+
+---
+
+## What's Next
+
+- [Full installation guide](/docs/installation/) — detailed setup including AEB, exported builds, and troubleshooting
+- [API Reference](/docs/api-reference/) — complete command and environment variable documentation
+- [Ecosystem overview](/ecosystem/) — how GRB and AEB work together

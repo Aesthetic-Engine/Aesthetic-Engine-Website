@@ -1,0 +1,145 @@
+---
+title: API Reference
+description: Complete command reference and environment variable documentation for Godot Runtime Bridge.
+---
+
+# API Reference
+
+Complete reference for GRB commands, environment variables, and MCP tools.
+
+---
+
+## Commands by Tier
+
+### Tier 0 — Observe
+
+Read-only commands. No side effects on game state.
+
+| Command | Description |
+|---------|-------------|
+| `ping` | Health check. Returns server status |
+| `auth_info` | Current authentication state and session tier |
+| `capabilities` | List of available commands for current tier |
+| `screenshot` | Capture current frame as PNG |
+| `scene_tree` | Dump full scene tree hierarchy |
+| `get_property` | Read a property from any node by path |
+| `runtime_info` | Engine version, FPS, frame count, OS info |
+| `get_errors` | Retrieve captured engine errors and warnings |
+| `wait_for` | Block until a condition is met (node exists, signal emitted) |
+| `audio_state` | Audio bus layout, volumes, effects |
+| `network_state` | Network peer status and connection info |
+| `grb_performance` | GRB-specific performance metrics |
+| `find_nodes` | Search scene tree by name, class, or group |
+
+### Tier 1 — Input
+
+Inject user input events. Does not modify game code or state directly.
+
+| Command | Description |
+|---------|-------------|
+| `click` | Inject mouse click at coordinates |
+| `key` | Inject keyboard key press |
+| `press_button` | Find and press a UI button by text or path |
+| `drag` | Inject mouse drag from point A to point B |
+| `scroll` | Inject mouse scroll events |
+| `gesture` | Inject touch gestures (pinch, swipe) |
+| `gamepad` | Inject gamepad button/axis input |
+
+### Tier 2 — Control
+
+Modify live game state. Use with caution.
+
+| Command | Description |
+|---------|-------------|
+| `set_property` | Write a property on any node by path |
+| `call_method` | Call a method on any node by path |
+| `quit` | Gracefully quit the running game |
+| `run_custom_command` | Execute a registered custom command |
+
+### Tier 3 — Danger
+
+Arbitrary code execution. Disabled by default.
+
+| Command | Description |
+|---------|-------------|
+| `eval` | Execute arbitrary GDScript. Requires `GDRB_TIER=3` and `GDRB_ENABLE_DANGER=1` |
+
+---
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `GDRB_TOKEN` | _(none)_ | Auth token. Enables the server. Auto-generates if `GODOT_DEBUG_SERVER=1` |
+| `GDRB_PORT` | `0` | TCP port. `0` = OS-assigned random port |
+| `GDRB_TIER` | `1` | Maximum session tier (0–3) |
+| `GDRB_INPUT_MODE` | `synthetic` | `synthetic` = inject InputEvents without OS cursor. `os` = move real cursor |
+| `GDRB_FORCE_WINDOWED` | _(none)_ | `1` = force windowed mode at startup |
+| `GDRB_ENABLE_DANGER` | _(none)_ | `1` = allow `eval` command. Also requires `GDRB_TIER=3` |
+| `GODOT_DEBUG_SERVER` | _(none)_ | Legacy activation. `1` = enable server with auto-generated token |
+
+---
+
+## MCP Tools
+
+The MCP bridge exposes GRB commands as MCP tools that Cursor and Claude Code can call directly. Each GRB command maps to a corresponding MCP tool with the `grb_` prefix.
+
+### Configuration
+
+MCP tools are configured in `.cursor/mcp.json`:
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "godot-runtime-bridge": {
+      "command": "node",
+      "args": ["/path/to/godot-runtime-bridge/mcp/index.js"],
+      "env": {
+        "GODOT_PATH": "/path/to/godot"
+      }
+    }
+  }
+}
+```
+
+### Available MCP Tools
+
+| MCP Tool | GRB Command | Description |
+|----------|-------------|-------------|
+| `grb_launch` | — | Launch Godot with the current project |
+| `grb_screenshot` | `screenshot` | Capture the current frame |
+| `grb_scene_tree` | `scene_tree` | Dump the scene hierarchy |
+| `grb_click` | `click` | Click at screen coordinates |
+| `grb_key` | `key` | Press a keyboard key |
+| `grb_get_property` | `get_property` | Read a node property |
+| `grb_set_property` | `set_property` | Write a node property |
+| `grb_runtime_info` | `runtime_info` | Get engine and performance info |
+
+For the complete MCP tool reference, see [mcp/README.md](https://github.com/Aesthetic-Engine/godot-runtime-bridge/blob/main/mcp/README.md) in the GRB repository.
+
+---
+
+## Custom Commands
+
+Register custom commands by adding the `GRBCommands` autoload:
+
+**Path:** `res://addons/godot-runtime-bridge/runtime_bridge/GRBCommands.gd`
+
+Add it in **Project → Project Settings → Autoload**, then register callables in your game code:
+
+```gdscript title="example_commands.gd"
+func _ready():
+    GRBCommands.register("reset_level", _reset_level)
+    GRBCommands.register("set_difficulty", _set_difficulty)
+
+func _reset_level(_args: Dictionary) -> Dictionary:
+    get_tree().reload_current_scene()
+    return {"status": "ok"}
+
+func _set_difficulty(args: Dictionary) -> Dictionary:
+    var level = args.get("level", 1)
+    GameState.difficulty = level
+    return {"status": "ok", "difficulty": level}
+```
+
+Invoke via the `run_custom_command` GRB command or the corresponding MCP tool.

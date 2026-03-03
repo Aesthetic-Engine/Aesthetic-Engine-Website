@@ -1,0 +1,67 @@
+---
+title: The Ecosystem
+description: Two open-source tools forming a closed-loop agentic game development workflow for Godot 4.5+.
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+# The Ecosystem
+
+Aesthetic Engine is two open-source tools that work together to create a fully agentic game development workflow for Godot.
+
+The thesis is simple: if your AI agent can **launch** your game, **observe** what's on screen, **edit** your code, and **verify** the result — you never need to leave the chat window.
+
+---
+
+## The Tools
+
+<CardGrid>
+	<Card title="Godot Runtime Bridge (GRB)" icon="setting">
+		The infrastructure layer. A TCP debug server embedded in your Godot project and an MCP bridge that connects it to Cursor or Claude Code. Your AI agent can screenshot, click, inspect the scene tree, profile FPS, and modify properties — all while the game is running.
+
+		**What it replaces:** Alt-Tabbing between editor and game window, manual playtesting, print-debugging.
+
+		[Full documentation →](/ecosystem/grb/)
+	</Card>
+	<Card title="Aesthetic Engine Builder (AEB)" icon="pencil">
+		The creative layer. A Godot editor plugin with a 5-pillar game design wizard. Answer questions about Goals, Rules, Interaction, Conflict, and Outcomes — then paste the generated prompt into Cursor. The agent builds a complete 1983-style CRT wireframe game from scratch.
+
+		**What it replaces:** Blank-canvas paralysis, boilerplate scene setup, manual CRT shader wiring.
+
+		[Full documentation →](/ecosystem/builder/)
+	</Card>
+</CardGrid>
+
+---
+
+## The Loop
+
+Every agentic workflow built on these tools follows the same three-phase cycle:
+
+| Phase | What Happens | Who Does It |
+|-------|-------------|-------------|
+| **Develop** | Write or modify game code based on a natural-language prompt | AI agent |
+| **Observe** | Launch the game, take screenshots, inspect scene tree and properties | AI agent via GRB |
+| **Verify** | Compare expected vs. actual behavior, fix issues, re-verify | AI agent via GRB |
+
+This cycle can run autonomously. You describe what you want. The agent builds it, checks it, and reports back.
+
+---
+
+## Requirements
+
+| Dependency | Version | Purpose |
+|-----------|---------|---------|
+| Godot | 4.5+ | Runtime (uses `OS.add_logger` API) |
+| Node.js | LTS | MCP bridge helper |
+| Cursor or Claude Code | Latest | AI agent interface |
+
+---
+
+## Get Started
+
+<CardGrid>
+	<LinkCard title="Quickstart" href="/docs/quickstart/" description="From zero to running in five minutes." />
+	<LinkCard title="Installation" href="/docs/installation/" description="Step-by-step setup for GRB, AEB, and the MCP bridge." />
+	<LinkCard title="Downloads" href="/downloads/" description="Direct binary downloads and terminal install commands." />
+</CardGrid>

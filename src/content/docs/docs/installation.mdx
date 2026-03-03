@@ -1,0 +1,159 @@
+---
+title: Installation
+description: Step-by-step installation for Godot Runtime Bridge, Aesthetic Engine Builder, and the MCP bridge.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Installation
+
+Complete setup guide for both tools in the Aesthetic Engine ecosystem.
+
+---
+
+## Godot Runtime Bridge (GRB)
+
+### Requirements
+
+- **Godot 4.5 or later** — GRB uses the `Logger` API (`OS.add_logger`) introduced in 4.5. Earlier versions are not supported.
+- **Node.js LTS** — required for the MCP bridge helper.
+- **Cursor or Claude Code** — any MCP-compatible AI agent.
+
+### Step 1 — Install the Addon
+
+<Tabs>
+<TabItem label="Manual">
+
+```bash title="Terminal"
+git clone https://github.com/Aesthetic-Engine/godot-runtime-bridge.git
+```
+
+Copy the `addons/godot-runtime-bridge/` folder into your Godot project's `addons/` directory.
+
+Enable the plugin: **Project → Project Settings → Plugins → Godot Runtime Bridge → Enable**.
+
+</TabItem>
+<TabItem label="Let Cursor Do It">
+
+Paste this prompt into Cursor Agent mode:
+
+> Set up the Godot Runtime Bridge (GRB) for this project. Install the addon if missing, create .cursor/mcp.json with the GRB MCP server (args: path to godot-runtime-bridge/mcp/index.js), add GODOT_PATH to env with the path to my Godot executable — search common locations or ask me. Run npm install in the mcp folder if needed. Tell me when done.
+
+</TabItem>
+</Tabs>
+
+### Step 2 — Install the MCP Bridge
+
+```bash title="Terminal"
+cd godot-runtime-bridge/mcp
+npm install
+```
+
+### Step 3 — Configure Cursor
+
+Create `.cursor/mcp.json` in your project root:
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "godot-runtime-bridge": {
+      "command": "node",
+      "args": ["C:/path/to/godot-runtime-bridge/mcp/index.js"],
+      "env": {
+        "GODOT_PATH": "C:/path/to/Godot_v4.5-stable_win64.exe"
+      }
+    }
+  }
+}
+```
+
+Replace both paths with your actual file locations.
+
+### Step 4 — Enable in Cursor
+
+1. Open **Settings → Tools & MCP**
+2. Find **godot-runtime-bridge** under Installed MCP Servers
+3. Toggle it **ON**
+4. Verify the green indicator appears
+
+:::caution
+This step is easy to miss — nothing will work without enabling the server in Cursor's MCP settings.
+:::
+
+### Step 5 — Verify
+
+In Cursor Agent chat:
+
+> Connect to Godot via the GRB bridge and confirm once connected.
+
+---
+
+## Aesthetic Engine Builder (AEB)
+
+### Requirements
+
+- **Godot 4.5+**
+- **GRB installed and connected** (see above)
+
+### Installation
+
+<Tabs>
+<TabItem label="From Source">
+
+```bash title="Terminal"
+git clone https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder.git
+```
+
+Open the project in Godot 4.5+. The builder addon is pre-configured.
+
+</TabItem>
+<TabItem label="Into Existing Project">
+
+Copy `addons/aesthetic-engine-builder/` from the repo into your project's `addons/` directory.
+
+Enable the plugin: **Project → Project Settings → Plugins → Aesthetic Engine Builder → Enable**.
+
+</TabItem>
+</Tabs>
+
+### Usage
+
+1. Click the **Aesthetic Engine Builder** tab in the Godot bottom panel
+2. Answer the 5 design pillar questions
+3. Click **Generate Prompt → Copy to Clipboard**
+4. Paste into Cursor Agent chat
+5. The agent builds your game, launches it via GRB, and verifies the result
+
+---
+
+## Exported Builds
+
+For testing against exported builds instead of editor runs, add `GDRB_EXE` to your MCP config:
+
+```json title=".cursor/mcp.json" ins={7}
+{
+  "mcpServers": {
+    "godot-runtime-bridge": {
+      "command": "node",
+      "args": ["C:/path/to/godot-runtime-bridge/mcp/index.js"],
+      "env": {
+        "GODOT_PATH": "C:/path/to/Godot_v4.5-stable_win64.exe",
+        "GDRB_EXE": "C:/path/to/your-exported-game.exe"
+      }
+    }
+  }
+}
+```
+
+When `GDRB_EXE` is present, missions and some flows use the export instead of the editor run.
+
+---
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| GRB tools not showing in Cursor | Check **Settings → Tools & MCP → godot-runtime-bridge → Logs** |
+| Game doesn't launch | Verify `GODOT_PATH` points to your Godot 4.5+ executable |
+| Tests run slowly | Don't minimize the game window — Godot throttles when minimized |
+| Connection refused | Ensure the plugin is enabled in **Project → Project Settings → Plugins** |

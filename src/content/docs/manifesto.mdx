@@ -1,0 +1,72 @@
+---
+title: Manifesto
+description: "Unchained Workflows — why Aesthetic Engine ships outside the Godot Asset Library and what that means for developers."
+---
+
+# Unchained Workflows
+
+## The Problem With Gates
+
+The traditional plugin ecosystem model works like this: you write a tool, submit it for review, wait for approval, and then your users download a version that was current when the reviewer last looked at it.
+
+For most tools, this is fine. For tools that integrate with AI agents, foundation model APIs, and MCP protocols that ship breaking changes weekly — it's a bottleneck that kills velocity.
+
+The Godot Asset Library is a good system for stable, mature plugins. Aesthetic Engine is not a stable, mature plugin. It's bleeding-edge infrastructure that evolves alongside the AI toolchain it connects to.
+
+---
+
+## The Decision
+
+Aesthetic Engine ships directly — GitHub releases, direct downloads, and copy-pasteable install commands. No approval queue. No version lag. No gatekeeping.
+
+This is not a workaround. It's a deliberate architecture decision.
+
+---
+
+## What This Means For You
+
+### Faster Iteration
+
+When Cursor ships a new MCP capability, GRB can support it the same day. When Godot 4.5 introduces `OS.add_logger`, we ship engine error capture within the week. No waiting for a reviewer to verify compatibility with a version of the engine they may not be running.
+
+### Direct Relationship
+
+Bug reports go straight to GitHub Issues. Fixes ship straight to you. There's no intermediary normalizing, repackaging, or delaying your update.
+
+### Full Transparency
+
+Every commit is public. Every release has a changelog. Every binary is built from the same source you can clone and audit. The security model is documented in [SECURITY.md](https://github.com/Aesthetic-Engine/godot-runtime-bridge/blob/main/SECURITY.md) — not buried in a review checklist.
+
+### Zero Lock-In
+
+The tools are MIT-licensed. Fork them. Vendor them. Modify them. Ship them inside your game. There are no usage restrictions, no telemetry, no phone-home.
+
+---
+
+## The Tradeoff
+
+You lose the one-click install button in the Godot editor's AssetLib tab. You gain:
+
+- Same-day compatibility with new AI toolchain releases
+- Direct binary downloads from GitHub Releases — no package manager, no account wall
+- Documentation structured for LLM ingestion, not human browsing
+- A security model designed for agentic workflows, not manual review
+
+---
+
+## Our Position
+
+We believe the future of game development is agentic. Developers will direct AI agents that build, test, and iterate on games in real time. The tooling for this future can't be gated behind approval workflows designed for a different era.
+
+Aesthetic Engine is built for developers who want to move at the speed of the AI toolchain — not the speed of a review queue.
+
+---
+
+## Get Started
+
+The tools are open source and ready to use:
+
+- [Quickstart Guide](/docs/quickstart/) — running in five minutes
+- [Downloads](/downloads/) — direct binaries and install commands
+- [GitHub: godot-runtime-bridge](https://github.com/Aesthetic-Engine/godot-runtime-bridge)
+- [GitHub: Aesthetic-Engine-Builder](https://github.com/Aesthetic-Engine/Aesthetic-Engine-Builder)

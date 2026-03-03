@@ -1,0 +1,19 @@
+{
+  "name": "aesthetic-engine-website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.37.6",
+    "@expressive-code/plugin-frames": "^0.41.7",
+    "@expressive-code/plugin-text-markers": "^0.41.7",
+    "astro": "^5.6.1",
+    "sharp": "^0.34.2"
+  }
+}

@@ -1,0 +1,68 @@
+---
+title: Aesthetic Engine
+description: Agentic game development infrastructure for Godot. Build, test, and ship games entirely through AI prompting.
+template: splash
+hero:
+  title: Agentic Godot Workflows
+  tagline: "Build, test, and debug Godot games entirely via prompting. No editor required. The AI agent launches your game, observes it, edits code, and verifies — full develop → observe → verify loops."
+  image:
+    file: ../../assets/logo.png
+  actions:
+    - text: Get Started
+      link: /docs/quickstart/
+      icon: right-arrow
+    - text: Downloads
+      link: /downloads/
+      icon: down-arrow
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## The Ecosystem
+
+Two open-source tools. One closed-loop agentic workflow.
+
+<CardGrid>
+	<Card title="Godot Runtime Bridge" icon="setting">
+		TCP debug server and MCP bridge connecting Cursor and Claude Code to your running Godot game. Launch, screenshot, click, inspect scene trees, profile performance — all from the chat window. [Learn more →](/ecosystem/grb/)
+	</Card>
+	<Card title="Aesthetic Engine Builder" icon="pencil">
+		Answer five game-design questions. Get a fully playable 1983-style CRT wireframe game. Scanlines, phosphor glow, barrel distortion — pure code-drawn graphics, zero sprites. [Learn more →](/ecosystem/builder/)
+	</Card>
+</CardGrid>
+
+## Why This Exists
+
+The current game development loop is broken. You write code, switch to the editor, hit play, Alt-Tab back, read the console, fix a typo, repeat. Every context switch costs minutes and focus.
+
+Aesthetic Engine eliminates the switch. Your AI agent becomes a first-class participant in the development loop: it launches the game, sees what's on screen, edits your source files, and verifies the fix — without you ever leaving the chat window.
+
+This isn't a plugin that adds a button. It's infrastructure that makes your game observable and controllable by AI.
+
+<CardGrid>
+	<Card title="Zero-JS Baseline" icon="rocket">
+		This site ships zero client-side JavaScript. Static HTML, instant loads, A+ environmental rating. Built with Astro + Starlight.
+	</Card>
+	<Card title="LLM-Optimized Docs" icon="open-book">
+		Every documentation page is structured as flat, self-contained chunks — explicitly formatted for RAG ingestion and AI copilot scraping.
+	</Card>
+	<Card title="Direct Downloads" icon="down-arrow">
+		Small zip files hosted on GitHub Releases. No accounts, no package managers, no middlemen.
+	</Card>
+	<Card title="Security-First" icon="warning">
+		Localhost-only binding, token auth, capability tiers, eval disabled by default. The bridge is inert in production builds.
+	</Card>
+</CardGrid>
+
+---
+
+<div class="founder-section">
+
+## Open Source Infrastructure
+
+Aesthetic Engine is an open-source game development studio building agentic tooling for Godot. Both projects are MIT-licensed, publicly developed on [GitHub](https://github.com/Aesthetic-Engine), and designed to be forked, vendored, and extended without restriction.
+
+The tools exist because the gap between "describe what you want" and "see it running" should be zero. Every component — the TCP bridge, the MCP layer, the wireframe renderer, the CRT pipeline — is built to close that gap.
+
+</div>
