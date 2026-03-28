@@ -30,6 +30,7 @@ export default defineConfig({
 			},
 			sidebar: [
 				{ label: 'Home', link: '/' },
+				{ label: 'About', slug: 'about' },
 				{
 					label: 'Ecosystem',
 					items: [

@@ -1,0 +1,92 @@
+---
+title: About Aesthetic Engine
+description: Why Aesthetic Engine exists, who built it, and how the tools connect to a broader body of work.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## At A Glance
+
+Aesthetic Engine is an open-source tool ecosystem for agentic Godot development and stylized playable prototyping.
+
+At the center are two products:
+
+- **Godot Runtime Bridge (GRB)**, which makes a running Godot game observable and controllable from an AI agent workflow
+- **Aesthetic Engine Builder (AEB)**, which turns structured design constraints into fully playable wireframe game prototypes
+
+Together they reduce the gap between describing a game idea, seeing it running, and testing whether it actually works.
+
+## Why It Exists
+
+Most game-development friction still lives in the loop between writing, launching, observing, and verifying.
+
+That loop gets worse once AI enters the picture. An agent can generate code quickly, but without runtime observability and verification infrastructure it cannot really close the loop. It can only guess.
+
+Aesthetic Engine exists to make that loop real:
+
+- build
+- launch
+- observe
+- verify
+- iterate
+
+The goal is to create workflows that are faster, more controllable, and more legible for real developers.
+
+## Built By
+
+Aesthetic Engine was built by **Matt Munroe**, a senior technical producer with 20 years of experience across launch readiness, QA, live operations, engineering-adjacent systems leadership, and cross-functional game development.
+
+These tools did not come from abstract interest in AI. They came from years of seeing where development teams lose time, where handoffs break, where quality becomes fragile, and where better tooling should exist.
+
+Professional work includes shipped titles and production leadership across:
+
+- *Batman: Arkham Shadow*
+- *Marvel's Iron Man VR*
+- *Republique VR*
+- *Torchlight II*
+- *Hob*
+
+The independent work extends those same instincts into product and tooling creation.
+
+## What Makes This Ecosystem Different
+
+<CardGrid>
+	<Card title="Runtime-Native" icon="setting">
+		These tools are built around the running game, not just code generation. The runtime is observable, inspectable, and testable.
+	</Card>
+	<Card title="Constraint-Driven" icon="star">
+		AEB uses strict visual and technical constraints deliberately. Code-drawn wireframe graphics are not a gimmick, they are a domain AI can reason about reliably today.
+	</Card>
+	<Card title="Operationally Serious" icon="approve-check">
+		Security defaults, capability tiers, verification loops, and practical install paths are treated as product requirements, not afterthoughts.
+	</Card>
+</CardGrid>
+
+## Broader Proof Of Work
+
+The tools on this site are part of a wider body of independent work exploring:
+
+- custom recommendation and curation systems
+- local voice and memory runtimes
+- authored horror adventure frameworks
+- playable prototypes built from strong visual and systemic constraints
+
+That matters because it shows these tools are not isolated experiments. They are being developed in the context of real runtime products, playable game systems, and production-minded workflow design.
+
+## Who This Is For
+
+Aesthetic Engine is especially relevant for:
+
+- Godot developers exploring agentic workflows
+- technical producers and tools teams trying to reduce QA friction
+- solo or small-team developers who want faster prototype loops
+- AI-native developers who want runtime validation, not just code generation
+- creators interested in stylized, constrained, code-driven game aesthetics
+
+## Recommended Starting Points
+
+- [Ecosystem Overview](/ecosystem/) — how GRB and AEB fit together
+- [Quickstart](/docs/quickstart/) — from zero to running in five minutes
+- [Downloads](/downloads/) — direct downloads and install commands
+- [Godot Runtime Bridge](/ecosystem/grb/) — the runtime automation layer
+- [Aesthetic Engine Builder](/ecosystem/builder/) — the prototype-generation layer

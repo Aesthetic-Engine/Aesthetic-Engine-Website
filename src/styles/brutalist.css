@@ -241,6 +241,11 @@ nav.sidebar {
 	color: var(--sl-color-gray-2);
 }
 
+.founder-section em {
+	color: var(--sl-color-white);
+	font-style: italic;
+}
+
 /* Download cards */
 .download-grid {
 	display: grid;
@@ -269,4 +274,10 @@ nav.sidebar {
 	font-family: var(--sl-font-mono);
 	font-size: 0.875rem;
 	color: var(--sl-color-gray-2);
+}
+
+.sl-markdown-content > p,
+.sl-markdown-content > ul,
+.sl-markdown-content > ol {
+	max-width: 50rem;
 }
