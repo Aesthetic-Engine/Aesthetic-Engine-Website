@@ -1,0 +1,291 @@
+---
+title: "Case Study: Building a Scene"
+description: "A real develop → observe → verify loop. How the dining room in The Never House went from a flat placeholder render to a finished horror set piece, using GRB, Codex, and Claude in the same workflow."
+---
+
+**One scene, two agents, zero work from the dev in the editor.** *The Never House* is a CRT wireframe horror game built with Godot Runtime Bridge and Aesthetic Engine Builder — the studio's own flagship example. This is an unedited walkthrough of how its dining room was redesigned — Codex diagnosing the problem live against the running game, Claude doing the art direction, and Codex implementing the result back into the runtime and adding finishing touches directed by the user. Every screenshot below is a real step from that session, in order.
+
+---
+
+<div class="phase-marker">
+<span class="phase-eyebrow">The Problem</span>
+
+## Before
+
+The dining room existed and ran cleanly, but it was visually flat next to the rest of the house — a center-box table on broad horizontal bands, no depth cues, nothing that read as "dining room" instead of "room with a rectangle in it."
+
+</div>
+
+<div class="storyboard">
+
+<div class="storyboard-step">
+<span class="storyboard-index">00</span>
+<div class="storyboard-body">
+<span class="storyboard-tag">Before</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/01-before.png" alt="The original flat dining room render, before any changes" />
+</figure>
+<p class="storyboard-caption">The starting point. A flat dining room render with no perspective floor, no focal silhouette, and no story embedded in the geometry — just a table in a box.</p>
+</div>
+</div>
+
+</div>
+
+<div class="phase-marker">
+<span class="phase-eyebrow">Phase 1</span>
+
+## Diagnose — Codex + GRB
+
+The session starts inside Codex, connected to the live, running game through the [Godot Runtime Bridge](/ecosystem/grb/). No editor, no manual screenshotting — Codex launches the game itself, navigates to the room, and captures what's actually on screen.
+
+</div>
+
+<div class="storyboard">
+
+<div class="storyboard-step">
+<span class="storyboard-index">01</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/02-codex-prompt.png" alt="Codex session start, asking for a screenshot and improvement suggestions for the dining room" />
+</figure>
+<p class="storyboard-caption">The brief: <em>"I need to improve the visuals in the dining room, they aren't up to par with the exterior, foyer, or living room."</em> Codex is asked to capture the current state and propose directions — not yet to make changes.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">02</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/03-codex-suggestions.png" alt="Codex returns five improvement suggestions plus a GRB verification of the live runtime" />
+</figure>
+<p class="storyboard-caption">After working directly against the running build for a couple minutes, Codex returns five concrete directions — a perspective floor, an implied "dinner that never arrived," a stronger focal silhouette, less generic geometry, and a frame-1 escalation — along with confirmation that GRB launched the game cleanly and captured the room from the live runtime, with no errors surviving past an initial bad eval call.</p>
+</div>
+</div>
+
+</div>
+
+<div class="phase-marker">
+<span class="phase-eyebrow">Phase 2</span>
+
+## Design — Claude
+
+Codex's diagnosis gets handed to Claude, alongside the room screenshot, for art direction. This is a separate conversation in a separate tool — the kind of cross-agent handoff GRB is built to support, since the runtime state and visual evidence travel with the screenshots rather than staying locked inside one session.
+
+</div>
+
+<div class="storyboard">
+
+<div class="storyboard-step">
+<span class="storyboard-index">03</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/04-claude-handoff.png" alt="Codex's suggestions pasted into a new conversation with Claude, asking for a design opinion" />
+</figure>
+<p class="storyboard-caption">Codex's five suggestions, pasted in full alongside the room screenshot, with a simple question: what's the best way to actually design this space?</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">04</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/05-claude-priorities.png" alt="Claude's prioritized design opinion on the five suggestions" />
+</figure>
+<p class="storyboard-caption">Rather than treating all five suggestions as equal, Claude ranks them — leading with the chandelier as "the room's soul," the perspective floor as the most urgent functional fix, and frame 1 as the most underrated opportunity for escalation.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">05</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/06-claude-concept-v1.png" alt="Claude's first SVG concept mockup of the redesigned dining room" />
+</figure>
+<p class="storyboard-caption">A full concept mockup, rendered as SVG, showing both states side by side — Frame 0 at rest and Frame 1 after the chair is touched — with each design decision numbered against the original five suggestions.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">06</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/07-claude-feedback-doors.png" alt="Claude explains design reasoning, then is asked to change the window and right wall element to doors" />
+</figure>
+<p class="storyboard-caption">Claude walks through the reasoning — the chandelier's pivot point, the missing plate's implied narrative, the gothic chair arch — then gets redirected: lose the face in the window, and the shape on the right should read as a door to the living room.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">07</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/08-claude-architecture-fix.png" alt="Architectural correction: window moved to the left wall after clarifying the room's layout" />
+</figure>
+<p class="storyboard-caption">A floor-plan correction: kitchen door on the left, living room door on the right, which means the window has to move to the exterior left wall. Claude reworks both far-wall elements as matching gothic arched doors and relocates the window accordingly.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">08</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/09-claude-concept-v2.png" alt="Updated concept with gothic arched doors and the window relocated to the left wall" />
+</figure>
+<p class="storyboard-caption">The updated render: both far-wall elements are now arched doors, the window sits correctly on the left wall, and the candlesticks have moved to a small console between the two doors.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">09</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/10-claude-refinement-request.png" alt="Claude flags remaining issues; user requests handle, window angle, and annotation fixes" />
+</figure>
+<p class="storyboard-caption">Claude flags what's left to fix — the window's foreshortening and a completely bare right wall — and gets three more notes back: move the door handle, fix the window angle, and strip the numbered callouts.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">10</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/11-claude-concept-cleaned.png" alt="Cleaned concept with corrected handle, window geometry, and no annotation layer" />
+</figure>
+<p class="storyboard-caption">A cleaner pass: door handle repositioned, window geometry corrected to a gentler, more legible tilt, and the annotation layer removed entirely — this is starting to look like a final reference image.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">11</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-claude">Claude</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/12-claude-concept-final.png" alt="Final concept pass with chair fixes, exported as Dining room v4 PNG" />
+</figure>
+<p class="storyboard-caption">One last round of chair fixes — orientation, scale, dropping two extra chairs and the window entirely — and Claude exports the result as a flat reference image: <em>Dining room v4</em>.</p>
+</div>
+</div>
+
+</div>
+
+<div class="phase-marker">
+<span class="phase-eyebrow">Phase 3</span>
+
+## Implement — Codex + GRB
+
+The concept image goes straight back into the original Codex session. From here it's a verification loop: edit the procedural drawing code, launch the game through GRB, screenshot the result, compare, fix, repeat.
+
+</div>
+
+<div class="storyboard">
+
+<div class="storyboard-step">
+<span class="storyboard-index">12</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/13-codex-implement-prompt.png" alt="Claude's concept image pasted into Codex with the instruction to match it" />
+</figure>
+<p class="storyboard-caption">Back in the GRB session, Claude's concept gets pasted in with a single instruction: <em>"can you make the dining room match this concept."</em> Codex goes to work directly on the procedural drawing code.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">13</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/14-codex-first-pass.png" alt="First implementation pass, verified clean through GRB with zero runtime errors" />
+</figure>
+<p class="storyboard-caption">First pass: boxed perspective, twin arched cabinets, a sideboard with candles, a larger chandelier, place settings, high-backed chairs, and a stronger frame-1 disturbance — captured live and verified with zero runtime errors.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">14</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/15-codex-fix-depth.png" alt="Fixing far-wall cabinet and door panels bleeding past the wall/floor line" />
+</figure>
+<p class="storyboard-caption">A depth artifact: the far-wall cabinet and door panels were bleeding past the wall/floor line. Codex corrects the constraint and strips the leftover perspective guide lines while it's in there.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">15</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/16-codex-fix-cabinet-chair.png" alt="Fixing the back cabinet floor-line mask and removing a cluttering back chair" />
+</figure>
+<p class="storyboard-caption">Two more readability notes in one round: the back cabinet still wasn't masking the floor line behind it, and a back chair was cluttering the silhouette. Both fixed in a single pass.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">16</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/17-codex-fix-annotated.png" alt="A markup with four pixel-level geometry issues, all fixed in one round" />
+</figure>
+<p class="storyboard-caption">Pixel-level QA: a markup directly on the screenshot calling out a visible floor line, a diagonal chair leg, diagonal table legs, and a chair leg not attached to its seat. All four fixed in one targeted edit.</p>
+</div>
+</div>
+
+<div class="storyboard-step">
+<span class="storyboard-index">17</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-codex">Codex</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/18-codex-fix-walls.png" alt="Restoring side room walls that were accidentally removed along with the guide lines" />
+</figure>
+<p class="storyboard-caption">A catch on the way out: removing the leftover perspective guide lines had accidentally taken the side room walls with them. One more fix restores the walls while keeping the guide lines gone.</p>
+</div>
+</div>
+
+</div>
+
+<div class="phase-marker">
+<span class="phase-eyebrow">The Result</span>
+
+## After
+
+</div>
+
+<div class="storyboard">
+
+<div class="storyboard-step">
+<span class="storyboard-index">18</span>
+<div class="storyboard-body">
+<span class="storyboard-tag tag-result">Final</span>
+<figure class="storyboard-figure">
+  <img src="/case-study/dining-room/19-after-final.png" alt="The finished dining room scene, captured live in-game with full UI" />
+</figure>
+<p class="storyboard-caption"><strong>The dining room as it actually runs.</strong> Composure meter, inventory, and narrative text all live — captured straight from the running build, the same way every step in this session was: through GRB, against the real game, not a mockup.</p>
+</div>
+</div>
+
+</div>
+
+---
+
+## Why This Workflow Works
+
+No single agent did this alone, and that's the point. Codex never had to guess at art direction — it diagnosed the problem against the live runtime, then implemented a concept it didn't have to invent. Claude never had to touch a Godot project or guess what was actually on screen — every decision was grounded in a real screenshot. And because [GRB](/ecosystem/grb/) keeps the loop closed — launch, observe, edit, verify — every claim of "fixed" in this session was checked against the running game before it was reported, not assumed.
+
+The whole exchange, start to finish, lived in chat windows and a running game. No manual screenshotting, no Alt-Tabbing to the editor, no "looks right to me" without proof.
+
+- [Read about Godot Runtime Bridge →](/ecosystem/grb/)
+- [Read about Aesthetic Engine Builder →](/ecosystem/builder/)
