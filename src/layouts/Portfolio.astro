@@ -1,0 +1,12 @@
+---
+import '../styles/portfolio.css';
+import logo from '../assets/logo.png';
+const {title = 'Games, experiments & development systems', description = 'Aesthetic Engine is the independent studio and development lab of Matt Munroe. Explore shipped games and the systems behind AI-assisted game development.'} = Astro.props;
+const current = Astro.url.pathname;
+const links = [['/games/','Games'],['/harness/','Development harness'],['/experiments/','Archive'],['/about/','About']];
+---
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#101510"/><link rel="icon" href="/favicon.svg"/><link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}/><meta property="og:title" content={title + ' — Aesthetic Engine'}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:image" content={new URL('/images/house.png', Astro.site)}/><title>{title} — Aesthetic Engine</title></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Aesthetic Engine home"><img src={logo.src} alt="" width="42" height="42"/><span>AESTHETIC<br/>ENGINE<span class="brand-dot">_</span></span></a><nav aria-label="Main navigation">{links.map(([url,label]) => <a href={url} aria-current={current.startsWith(url) ? 'page' : undefined}>{label}</a>)}</nav><a class="header-link" href="https://aestheticengine.itch.io/">Play on itch.io <span aria-hidden="true">↗</span></a></header>
+<main id="main"><slot/></main>
+<footer><a class="footer-brand" href="/">AESTHETIC ENGINE<span>Independent games. Systems built by making them.</span></a><div><a href="https://aestheticengine.itch.io/">itch.io ↗</a><a href="https://github.com/Aesthetic-Engine">GitHub ↗</a><a href="/about/">Matt Munroe ↗</a></div><p>© {new Date().getFullYear()} Aesthetic Engine</p></footer></body></html>

@@ -7,6 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Aesthetic Engine',
+			disable404Route: true,
 			logo: {
 				src: './src/assets/logo.png',
 				alt: 'Aesthetic Engine',
@@ -30,9 +31,12 @@ export default defineConfig({
 			},
 			sidebar: [
 				{ label: 'Home', link: '/' },
-				{ label: 'About', slug: 'about' },
+				{ label: 'Games', link: '/games/' },
+				{ label: 'Development harness', link: '/harness/' },
+				{ label: 'About', link: '/about/' },
+				{ label: 'Archive', link: '/experiments/' },
 				{
-					label: 'Ecosystem',
+					label: 'Archive: original tools',
 					items: [
 						{ label: 'Overview', slug: 'ecosystem' },
 						{ label: 'Aesthetic Engine Builder (AEB)', slug: 'ecosystem/builder' },

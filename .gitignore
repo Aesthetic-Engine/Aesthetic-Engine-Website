@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # non-project files
 *.docx
+
+# Isolated development worktrees
+.worktrees/
