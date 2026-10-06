@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-05",
+  "proof": "Static build and markup checks; no browser or SE session",
+  "pages": 16,
+  "internalReferences": 355,
+  "broken": [],
+  "pageChecks": [
+    {
+      "page": "404.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "about\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "experiments\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "games\\a-household-exorcism\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "games\\game-torch\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "games\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "harness\\index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    },
+    {
+      "page": "index.html",
+      "h1": 1,
+      "title": true,
+      "description": true,
+      "main": true,
+      "imagesWithoutAlt": 0
+    }
+  ]
+}

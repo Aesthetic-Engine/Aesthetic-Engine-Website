@@ -1,0 +1,26 @@
+{
+  "proof": "Static generated HTML only; playback and visual rendering unverified",
+  "trailers": [
+    {
+      "slug": "a-household-exorcism",
+      "oneIframe": true,
+      "correctVideo": true,
+      "accessibleTitle": true,
+      "lazy": true,
+      "fullscreen": true,
+      "noAutoplay": true,
+      "fallback": true
+    },
+    {
+      "slug": "game-torch",
+      "oneIframe": true,
+      "correctVideo": true,
+      "accessibleTitle": true,
+      "lazy": true,
+      "fullscreen": true,
+      "noAutoplay": true,
+      "fallback": true
+    }
+  ],
+  "resumePdfAbsent": true
+}

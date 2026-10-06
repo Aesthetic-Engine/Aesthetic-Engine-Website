@@ -3,7 +3,7 @@
 Checked 2026-10-05.
 
 - Owner brief: agentchattr #website 15127. First-product status, positioning, hierarchy, open-source intent.
-- Supplied Matt_Munroe_Resume.pdf: selected professional roles, dates, titles, LinkedIn URL, Game Torch stack. Original PDF is not included in public files: contact-detail disclosure requires explicit approval.
+- Supplied Matt_Munroe_Resume.pdf: selected professional roles, dates, titles, LinkedIn URL, Game Torch stack. Original PDF stays private by owner decision #website 15137.
 - https://aestheticengine.itch.io/ : both products listed.
 - https://aestheticengine.itch.io/a-household-exorcism : published Windows game, interaction, setting, release date. public/images/house*.png are the three published screenshots, downloaded from its itch CDN links.
 - https://aestheticengine.itch.io/game-torch : product loop, Windows release, February 2026 devlog. public/images/torch* are published screenshots from its itch CDN links.
@@ -14,3 +14,5 @@ Checked 2026-10-05.
 - Existing GRB documentation: runtime information, scene tree, property and screenshot capabilities. Archive pages explicitly labeled as historical documentation.
 
 This website task did not run a game session, SE playtest, or hardware. No new integration/performance claims are made.
+
+- Owner #website 15136 supplied trailer URLs: https://www.youtube.com/watch?v=Vg_oi3J-2FQ (A Household Exorcism), https://www.youtube.com/watch?v=RehHpcDhhKI (Game Torch). Embedded via youtube-nocookie.com, without autoplay; direct watch links are also provided. Playback has not been browser-verified.

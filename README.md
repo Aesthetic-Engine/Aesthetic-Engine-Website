@@ -15,13 +15,14 @@ Existing GitHub Pages deployment and public/CNAME are retained. No hosting migra
 
 - src/components/Work.astro: shared games feature.
 - src/components/Credits.astro: selected professional credits.
+- src/components/Trailer.astro: responsive YouTube embeds; each game page supplies its video ID.
 - src/pages/games/: individual projects.
 - src/pages/harness.astro: current harness description.
 - src/styles/portfolio.css: responsive phosphor design.
 - docs/content-sources.md: factual and asset provenance.
 - DECISIONS.md and BACKLOG.md: owner direction and open follow-through.
 
-The original résumé PDF is not included in public files. Downloadable publication requires approval because it includes contact details.
+The original résumé PDF is not included in public files. The owner chose to keep it private (#website 15137).
 
 ## License
 
