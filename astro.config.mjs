@@ -44,6 +44,7 @@ export default defineConfig({
 					],
 				},
 				{ label: 'Philosophy', slug: 'philosophy' },
+				{ label: 'Case Study', slug: 'case-study' },
 				{
 					label: 'Documentation',
 					items: [
